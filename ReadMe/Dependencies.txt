@@ -1,0 +1,3 @@
+Python libraries:
+    pygetwindow
+    psutil

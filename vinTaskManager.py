@@ -2,7 +2,6 @@
 from psutil import process_iter
 
 def isAppRunning(appName):
-    """tested"""
     for i in process_iter(["name"]):
         if i.info["name"] == appName:
             return True
