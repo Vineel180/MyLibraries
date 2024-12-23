@@ -1,3 +1,4 @@
+# TESTED
 import pygetwindow
 import re
 

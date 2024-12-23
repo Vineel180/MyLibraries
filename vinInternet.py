@@ -1,3 +1,4 @@
+# TESTED
 from socket import create_connection
 from time import sleep
 

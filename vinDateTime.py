@@ -1,8 +1,9 @@
+# TESTED
 from datetime import datetime
 
 # FUNCTIONS
 def getDateTimeWeekday():
-    """tested
+    """
     o:
         str(YYYY + MM + DD + HH + MM + SS + W)
             where W=0 for monday
