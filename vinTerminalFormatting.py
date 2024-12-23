@@ -38,6 +38,8 @@ bgMagentaBright = "\033[105m"
 bgCyanBright = "\033[106m"
 bgWhiteBright = "\033[107m"
 
+### ### ### ### ###
+
 # FUNCTIONS
 def printSpecial(textToPrint="", printAttribute="", endingChar="\n"):
     """
