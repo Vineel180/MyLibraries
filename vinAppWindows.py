@@ -20,7 +20,6 @@ def getWindow(windowName, restore=True, activate=True, maximize=True):
         return True
     else:
         return False
-
 def getWindow_regex(windowName_regex, restore=True, activate=True, maximize=True):
     """1
     o:

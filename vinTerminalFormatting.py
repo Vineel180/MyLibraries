@@ -46,7 +46,6 @@ def printSpecial(textToPrint="", printAttribute="", endingChar="\n"):
         chain printAttribute using +
     """
     print(f"{printAttribute}{textToPrint}\033[0m", end=endingChar)
-
 def inputSpecial(textToPrint="", printAttribute="", inputAttribute=""):
     """1
     i:

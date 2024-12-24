@@ -35,6 +35,7 @@ def getFilesAndFoldersInFolder_osWalk(Path):
         List.append(i)
     return List
 
+# SEARCH
 def searchFilesInFolder_withExtension__osWalk(Path, extensionList):
     """1
     p:
@@ -48,7 +49,7 @@ def searchFilesInFolder_withExtension__osWalk(Path, extensionList):
         if (vinFileManagement_Base.separateExtension(i))[-1] in extensionList:
             newList.append(i)
     return newList
-def searchFilesYaFoldersInFolder_usingRegex__osWalk(Path, regexPattern, BothIs0_FilesIs1_FoldersIs2=0):
+def searchFiles_Ya_FoldersInFolder_usingRegex__osWalk(Path, regexPattern, BothIs0_FilesIs1_FoldersIs2=0):
     """1
     o:
         list(files and/or folders with path)

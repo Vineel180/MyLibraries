@@ -9,7 +9,6 @@ def isAppRunning(appName):
         if i.info["name"] == appName:
             return True
     return False
-
 def stopApp(appName, printError=False):
     """1
     NOTE: returns FALSE if app was not running

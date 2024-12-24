@@ -1,6 +1,5 @@
 from datetime import datetime
 
-# FUNCTIONS
 def getDateTimeWeekday():
     """1
     o:

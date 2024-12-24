@@ -11,7 +11,6 @@ def checkInternetConnection(tryForXSecsMax = 3):
         return True
     except OSError:
         return False
-
 def waitForInternetConnection(retryEveryXSecs = 3, tryForXSecsMax_perCycle = 3):
     """1
     """

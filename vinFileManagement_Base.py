@@ -13,6 +13,10 @@ def separatePath(Path):
         list(str( remainder ), str( OBJECT))
     """
     return Path.rsplit("\\", 1)
+def removeTrailingChars(String, Char):
+    while String[-1] == Char:
+        String = String[:-1]
+    return String
 
 # CHECK IF OBJECT EXISTS
 def doesFileExist(path):
@@ -46,7 +50,7 @@ def doesObjectExist(path):
         return False
 
 # FIND OBJECT TYPE
-def isFile(Path):
+def isFile_ifFileExists(Path):
     """1
     NOTE: returns FALSE if object doesn't exist
         so, use doesObjectExist() beforehand to check if object exists
@@ -57,7 +61,7 @@ def isFile(Path):
         return True
     else:
         return False
-def isFolder(Path):
+def isFolder_ifFileExists(Path):
     """1
     NOTE: returns FALSE if object doesn't exist
         so, use doesObjectExist() beforehand to check if object exists

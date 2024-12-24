@@ -8,13 +8,11 @@ def p(Print=""):
     print()
     """
     print(Print)
-
 def i(Input=""):
     """1
     input()
     """
     input(Input)
-
 def printElementsInIterator(Iterator):
     for i in Iterator:
         print(i)

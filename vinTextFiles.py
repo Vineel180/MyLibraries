@@ -1,4 +1,3 @@
-# FUNCTIONS
 def readFile(filePath):
     """1
     o:
@@ -7,7 +6,6 @@ def readFile(filePath):
     with open(filePath, "r") as file:
         fileData = file.read()
         return fileData
-
 def writeFile(filePath, dataToWrite=""):
     """1
     """
