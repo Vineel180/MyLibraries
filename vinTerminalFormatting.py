@@ -3,12 +3,12 @@
 # Text
 Reset = "\033[0m"
 Blinking = "\033[5m"
-Bright = "\033[1m"
+Bright=Bold = "\033[1m"
 Dim = "\033[2m"
 Italic = "\033[3m"
 Underline = "\033[4m"
-ReverseColours = "\033[7m"
-HideText = "\033[8m"
+ReverseColours=ReverseTextAndBgColours = "\033[7m"
+HideText=ConcealText = "\033[8m"
 
 # Text Colours
 Black = "\033[30m"
