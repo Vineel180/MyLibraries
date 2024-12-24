@@ -1,8 +1,11 @@
-# TESTED
 import pygetwindow
 import re
 
 def getWindow(windowName, restore=True, activate=True, maximize=True):
+    """1
+    o:
+        bool
+    """
     window = pygetwindow.getWindowsWithTitle(windowName)
     if window:
         window = window[0]
@@ -19,6 +22,10 @@ def getWindow(windowName, restore=True, activate=True, maximize=True):
         return False
 
 def getWindow_regex(windowName_regex, restore=True, activate=True, maximize=True):
+    """1
+    o:
+        bool
+    """
     allWindows = pygetwindow.getAllTitles()
     for i in allWindows:
         if re.search(windowName_regex, i):

@@ -1,4 +1,3 @@
-# TESTED
 # VARIABLES
 # Text
 Reset = "\033[0m"
@@ -42,14 +41,14 @@ bgWhiteBright = "\033[107m"
 
 # FUNCTIONS
 def printSpecial(textToPrint="", printAttribute="", endingChar="\n"):
-    """
+    """1
     i:
         chain printAttribute using +
     """
     print(f"{printAttribute}{textToPrint}\033[0m", end=endingChar)
 
 def inputSpecial(textToPrint="", printAttribute="", inputAttribute=""):
-    """
+    """1
     i:
         chain printAttribute/inputAttribute using +
     o:
@@ -61,4 +60,6 @@ def inputSpecial(textToPrint="", printAttribute="", inputAttribute=""):
     return userInput
 
 def setTerminalTitle(terminalTitle="Python Terminal"):
+    """1
+    """
     print(f"\033]0;{terminalTitle}\007", end="")
