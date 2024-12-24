@@ -3,16 +3,6 @@ import os
 import re
 
 # GET OBJECTS IN FOLDER
-def getFoldersInFolder_osWalk(Path):
-    """1
-    o:
-        list(object name with path)
-    """
-    List = []
-    for root, folders, files in os.walk(Path):
-        for folder in folders:
-            List.append( os.path.join(root, folder) )
-    return List
 def getFilesInFolder_osWalk(Path):
     """1
     o:
@@ -22,6 +12,16 @@ def getFilesInFolder_osWalk(Path):
     for root, folders, files in os.walk(Path):
         for file in files:
             List.append( os.path.join(root, file) )
+    return List
+def getFoldersInFolder_osWalk(Path):
+    """1
+    o:
+        list(object name with path)
+    """
+    List = []
+    for root, folders, files in os.walk(Path):
+        for folder in folders:
+            List.append( os.path.join(root, folder) )
     return List
 def getFilesAndFoldersInFolder_osWalk(Path):
     """1
@@ -36,7 +36,7 @@ def getFilesAndFoldersInFolder_osWalk(Path):
     return List
 
 # SEARCH
-def searchFilesInFolder_withExtension__osWalk(Path, extensionList):
+def searchFilesInFolder_withExtensions__osWalk(Path, extensionList):
     """1
     p:
         get files in folder with extensions in extensionList
