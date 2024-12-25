@@ -1,3 +1,5 @@
+from sys import stdout
+
 # VARIABLES
 # Text
 Reset = "\033[0m"
@@ -8,6 +10,16 @@ Italic = "\033[3m"
 Underline = "\033[4m"
 ReverseColours=ReverseTextAndBgColours = "\033[7m"
 HideText=ConcealText = "\033[8m"
+# More
+def clearScreen():
+    stdout.write("\033[3J")
+    stdout.flush()
+def sendCursorToHome():
+    stdout.write("\033[H")
+    stdout.flush()
+def clearScreen_And_sendCursorToHome():
+    clearScreen()
+    sendCursorToHome()
 
 # Text Colours
 Black = "\033[30m"
@@ -58,7 +70,57 @@ def inputSpecial(textToPrint="", printAttribute="", inputAttribute=""):
     print("\033[0m", end="")
     return userInput
 
+def getSameLengthNumbers_range(endAtNumber, paddingChar=" ", paddingCharPosition_falseIfPre_trueIfPost=True, 
+                               anyNumberExcept_endAtNumber_isNegative__And__endAtNumber_isPositive=False, 
+                               startAtNumber=1, stepSize=1, preNumberString="", postNumberString=""):
+    """1
+    for -ve numbers use anyNumberExcept_endAtNumber_isNegative__And__endAtNumber_isPositive
+    """
+    listOfNumbers = range(startAtNumber, endAtNumber+1, stepSize)
+    if anyNumberExcept_endAtNumber_isNegative__And__endAtNumber_isPositive:
+        lenOfLargestNumber = len(str(endAtNumber))+1
+    else:
+        lenOfLargestNumber = len(str(endAtNumber))
+    newListOfNumbers = []
+    for i in listOfNumbers:
+        i = str(i)
+        lenDiff = lenOfLargestNumber - len(i)
+        i = preNumberString + i + postNumberString
+        if paddingCharPosition_falseIfPre_trueIfPost:
+            for j in range(lenDiff):
+                i = i + paddingChar
+        else:
+            for j in range(lenDiff):
+                i = paddingChar + i
+        newListOfNumbers.append(i)
+    return newListOfNumbers
+
+def getSameLengthNumber_instanceIterator(numberToConvert, LargestNumber,
+                                         paddingChar=" ", paddingCharPosition_falseIfPre_trueIfPost=True, preNumberString="", postNumberString=""):
+    """1
+    """
+    number = str(numberToConvert)
+    if number.startswith("-"):
+        len_ofLargestNumber = len(str(LargestNumber))+1
+    else:
+        len_ofLargestNumber = len(str(LargestNumber))
+    lenDiff = len_ofLargestNumber - len(number)
+    number = preNumberString + number + postNumberString
+    if paddingCharPosition_falseIfPre_trueIfPost:
+        for j in range(lenDiff):
+            number = number + paddingChar
+    else:
+        for j in range(lenDiff):
+            number = paddingChar + number
+    return number
+
 def setTerminalTitle(terminalTitle="Python Terminal"):
     """1
     """
     print(f"\033]0;{terminalTitle}\007", end="")
+
+def setAndPrintSpecialTerminalTitle(terminalTitle="Python Terminal", printAttribute=ReverseColours, endingChar="\n\n", addToPrintOnly_Pre = " ", addToPrintOnly_Post = " "):
+    """1
+    """
+    print(f"\033]0;{terminalTitle}\007", end="")
+    printSpecial(addToPrintOnly_Pre+terminalTitle+addToPrintOnly_Post, printAttribute, endingChar)
