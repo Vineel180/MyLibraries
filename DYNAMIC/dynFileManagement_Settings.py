@@ -1,7 +1,7 @@
-"""ABOUT:
+"""NOTE:
     "",
 """
-listOfPrimaryDrives_inWindowsFileExplorer = [
+listOfMyPrimaryDrives_inWindowsFileExplorer = [
     "C",
     "D",
     "E",
