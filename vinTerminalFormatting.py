@@ -1,4 +1,9 @@
 from sys import stdout
+#
+try:
+    from vinBase_IO import *
+except ImportError:
+    importError = True
 
 # VARIABLES
 # Text
@@ -49,17 +54,24 @@ bgMagentaBright = "\033[105m"
 bgCyanBright = "\033[106m"
 bgWhiteBright = "\033[107m"
 
-### ### ### ### ###
+### ### ### ### ### ### ### ### ### ###
 
 # FUNCTIONS
 def printSpecial(textToPrint="", printAttribute="", endingChar="\n"):
-    """1
+    """
     i:
         chain printAttribute using +
     """
     print(f"{printAttribute}{textToPrint}\033[0m", end=endingChar)
+def pSpecial(textToPrint="", printAttribute="", endingChar="\n"):
+    """
+    i:
+        chain printAttribute using +
+    """
+    printSpecial(textToPrint, printAttribute, endingChar)
+
 def inputSpecial(textToPrint="", printAttribute="", inputAttribute=""):
-    """1
+    """
     i:
         chain printAttribute/inputAttribute using +
     o:
@@ -69,58 +81,41 @@ def inputSpecial(textToPrint="", printAttribute="", inputAttribute=""):
     userInput = input()
     print("\033[0m", end="")
     return userInput
-
-def getSameLengthNumbers_range(endAtNumber, paddingChar=" ", paddingCharPosition_falseIfPre_trueIfPost=True, 
-                               anyNumberExcept_endAtNumber_isNegative__And__endAtNumber_isPositive=False, 
-                               startAtNumber=1, stepSize=1, preNumberString="", postNumberString=""):
-    """1
-    for -ve numbers use anyNumberExcept_endAtNumber_isNegative__And__endAtNumber_isPositive
+def iSpecial(textToPrint="", printAttribute="", inputAttribute=""):
     """
-    listOfNumbers = range(startAtNumber, endAtNumber+1, stepSize)
-    if anyNumberExcept_endAtNumber_isNegative__And__endAtNumber_isPositive:
-        lenOfLargestNumber = len(str(endAtNumber))+1
-    else:
-        lenOfLargestNumber = len(str(endAtNumber))
-    newListOfNumbers = []
-    for i in listOfNumbers:
-        i = str(i)
-        lenDiff = lenOfLargestNumber - len(i)
-        i = preNumberString + i + postNumberString
-        if paddingCharPosition_falseIfPre_trueIfPost:
-            for j in range(lenDiff):
-                i = i + paddingChar
-        else:
-            for j in range(lenDiff):
-                i = paddingChar + i
-        newListOfNumbers.append(i)
-    return newListOfNumbers
-
-def getSameLengthNumber_instanceIterator(numberToConvert, LargestNumber,
-                                         paddingChar=" ", paddingCharPosition_falseIfPre_trueIfPost=True, preNumberString="", postNumberString=""):
-    """1
+    i:
+        chain printAttribute/inputAttribute using +
+    o:
+        str(userInput)
     """
-    number = str(numberToConvert)
-    if number.startswith("-"):
-        len_ofLargestNumber = len(str(LargestNumber))+1
-    else:
-        len_ofLargestNumber = len(str(LargestNumber))
-    lenDiff = len_ofLargestNumber - len(number)
-    number = preNumberString + number + postNumberString
-    if paddingCharPosition_falseIfPre_trueIfPost:
-        for j in range(lenDiff):
-            number = number + paddingChar
-    else:
-        for j in range(lenDiff):
-            number = paddingChar + number
-    return number
+    return inputSpecial(textToPrint, printAttribute, inputAttribute)
 
 def setTerminalTitle(terminalTitle="Python Terminal"):
-    """1
+    """
     """
     print(f"\033]0;{terminalTitle}\007", end="")
 
-def setAndPrintSpecialTerminalTitle(terminalTitle="Python Terminal", printAttribute=ReverseColours, endingChar="\n\n", addToPrintOnly_Pre = " ", addToPrintOnly_Post = " "):
-    """1
+def setAndPrintTerminalTitle(terminalTitle="Python Terminal", printAttribute=ReverseColours, endingChar="\n\n", addToPrintOnly_Pre = " ", addToPrintOnly_Post = " "):
+    """
+    NOTE: read default settings
     """
     print(f"\033]0;{terminalTitle}\007", end="")
-    printSpecial(addToPrintOnly_Pre+terminalTitle+addToPrintOnly_Post, printAttribute, endingChar)
+    printSpecial(addToPrintOnly_Pre + terminalTitle + addToPrintOnly_Post, printAttribute, endingChar)
+
+def getSameLengthNumbers_iterator(numberToConvert, largestNumber, paddingChar=" ", paddingCharPosition_falseIfPre_trueIfPost=False, preNumStr="", postNumStr=""):
+    """
+    p:
+        An iterator (ie a single number/time)
+    o:
+        str(customized number)
+    """
+    number = str(numberToConvert)
+    lenDiff = len(str(largestNumber)) - len(number)
+    number = preNumStr + number + postNumStr
+    if paddingCharPosition_falseIfPre_trueIfPost:
+        for i in range(lenDiff):
+            number = number + paddingChar
+    else:
+        for i in range(lenDiff):
+            number = paddingChar + number
+    return number

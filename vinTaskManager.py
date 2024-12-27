@@ -1,29 +1,46 @@
 from psutil import process_iter
 
 def isAppRunning(appName):
-    """1
+    """
     o:
         bool
     """
     for i in process_iter(["name"]):
-        if i.info["name"] == appName:
+        if appName == i.info["name"]:
             return True
     return False
-def stopApp(appName, printError=False):
-    """1
+
+def stopApp(appName, return_ifRunning=False, printError=False):
+    """
     NOTE: returns FALSE if app was not running
     o:
-        bool
+        bool(ifSuccessful)
+        bool(ifRunning) is OFF by default
     """
     for i in process_iter(["pid", "name"]):
-        if appName in i.info["name"]:
+        if appName == i.info["name"]:
             try:
                 i.terminate()
-                return True
+                #
+                if return_ifRunning:
+                    return True, True
+                else:
+                    return True
+                #
             except Exception as e:
                 if printError:
-                    print(f"Failed to terminate {appName}: {e}")
-                return False
+                    print(f"Failed to terminate app '{appName}': {e}")
+                #
+                if return_ifRunning:
+                    return False, True
+                else:
+                    return False
+                #
     if printError:
-        print(f"App {appName} is not running.")
-    return False
+        print(f"App '{appName}' is not running.")
+    #
+    if return_ifRunning:
+        return False, False
+    else:
+        return False
+    #

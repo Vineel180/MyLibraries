@@ -1,7 +1,7 @@
 from datetime import datetime
 
 def getDateTimeWeekday():
-    """1
+    """
     o:
         str(YYYY + MM + DD + HH + MM + SS + W)
             where W=0 for monday
@@ -11,23 +11,25 @@ def getDateTimeWeekday():
     weekday = now.weekday()
     return dateTime + str(weekday)
 
-def getDate(separator="", reverse=False):
-    """1
+def getDate(separator="", DDMMYYYY_format=False):
+    """
     o:
         str
     """
-    if reverse:
+    if DDMMYYYY_format:
         return datetime.now().strftime(f"%d{separator}%m{separator}%Y")
     else:
         return datetime.now().strftime(f"%Y{separator}%m{separator}%d")
+
 def getTime(separator=""):
-    """1
+    """
     o:
         str
     """
     return datetime.now().strftime(f"%H{separator}%M{separator}%S")
+
 def getWeekday():
-    """1
+    """
     o:
         str
     """
