@@ -13,7 +13,5 @@ def checkInternetConnection(maxResponseWaitTime=3):
         return False
 
 def waitForInternetConnection(retryEveryXSecs = 3, maxResponseWaitTime_perCycle = 3):
-    """
-    """
     while not checkInternetConnection(maxResponseWaitTime_perCycle):
         sleep(retryEveryXSecs)

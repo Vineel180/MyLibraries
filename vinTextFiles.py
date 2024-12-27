@@ -10,14 +10,20 @@ def readFile(filePath):
         return fileData
 
 def writeFile_withOverwriteEnabled(filePath, dataToWrite=""):
+    """
+    NOTE: doesn't check if file exists
+    """
     with open(filePath, "w") as file:
         file.write(dataToWrite)
     return True
 def writeFile(filePath, dataToWrite="", overwriteIfFileAlreadyExists=False):
+    """
+    NOTE: doesn't check if file exists
+    """
     if overwriteIfFileAlreadyExists:
+        return writeFile_withOverwriteEnabled(filePath, dataToWrite)
+    else:
         if osPath.isfile(filePath):
             return False
         else:
             return writeFile_withOverwriteEnabled(filePath, dataToWrite)
-    else:
-        return writeFile_withOverwriteEnabled(filePath, dataToWrite)
