@@ -1,35 +1,27 @@
-""" UNFIN
-def isValidPath_wfe():
-def isValidName_wfe():
-def moveTarget():
-def copyTarget():
-def renameTarget():
-"""
-
-import vinFileManagement_Base
 import os
+import shutil
+import vinFileManagement_Base
 
-def reduceFileNameLength(fileName, newLength):
+def reduceFileNameLength(fileName):
 
-def convertToValidName_wfe(Name, preUniqueIdString=" (", postUniqueIdString=")"):
+def convertToValidFileName(fileName):
 
-def convertToValidPath_wfe(Path, preUniqueIdString=" (", postUniqueIdString=")"):
-    Path = vinFileManagement_Base.separatePath(Path)
-    folderPath = Path[0]
-    fileName = convertToValidName_wfe(Path[1], preUniqueIdString, postUniqueIdString)
+def convertToValidFolderPath(Path):
 
-def renameObject(oldFilePath, newFileName, addExtension=True, preUniqueIdString=" (", postUniqueIdString=")"):
-    """
-    i:
-        addExtension = addExtension, if object is file
-        convertToValidPath = convertToValidPath, and object name
-    """
+def convertToValidFolderPathAndObjectName(Path):
+    if len(Path)>260:
 
-    oldFilePath = convertToValidPath_wfe(oldFilePath, preUniqueIdString, postUniqueIdString)
-    folderPath = vinFileManagement_Base.separatePath(oldFilePath)[0]
-    newFilePath = convertToValidPath_wfe( os.path.join(folderPath, newFileName) , preUniqueIdString, postUniqueIdString)
+
+def renameObject(oldFilePath, newFileName, autoAddExtension=True, convertToValidPath=True, preUniqueIdStr=" (", postUniqueIdStr=")", autoReduceLongFileNames=False):
+    folderPath = ( vinFileManagement_Base.separatePath(oldFilePath) )[0]
+    if autoAddExtension:
+        newFilePath = newFilePath + (vinFileManagement_Base.separateExtension(oldFilePath))[-1]
+    newFilePath = os.path.join(folderPath, newFileName)
+
+    newFilePath = 
     os.rename(oldFilePath, newFilePath)
 
-
-def createFolderPath(Path):
-    os.makedirs(Path, exist_ok=True)
+"""
+if not os.path.isdir(folderPath):
+    os.makedirs(folderPath)
+"""
