@@ -34,3 +34,6 @@ def isFileOrFolderOrNone(Path):
         return 1
     else:
         return 0
+
+def createFolder(Path):
+    os.makedirs(Path, exist_ok=True)
