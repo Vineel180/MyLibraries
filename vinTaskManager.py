@@ -10,31 +10,18 @@ def isAppRunning(appName):
             return True
     return False
 
-def stopApp(appName, return_ifRunning=False):
+def stopApp(appName):
     """
-    NOTE: returns FALSE if app was not running
     o:
-        bool(ifSuccessful)
-        bool(ifRunning) is OFF by default
+        0: App was terminated
+        1: Failed to terminate app
+        2: App was not running
     """
     for i in process_iter(["pid", "name"]):
         if appName == i.info["name"]:
             try:
                 i.terminate()
-                #
-                if return_ifRunning:
-                    return True, True
-                else:
-                    return True
-                #
+                return 0
             except Exception:
-                #
-                if return_ifRunning:
-                    return False, True
-                else:
-                    return False
-                #
-    if return_ifRunning:
-        return False, False
-    else:
-        return False
+                return 1
+    return 2

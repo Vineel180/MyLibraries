@@ -17,7 +17,7 @@ ReverseColours=ReverseTextAndBgColours = "\033[7m"
 HideText=ConcealText = "\033[8m"
 # More
 def clearScreen():
-    stdout.write("\033[3J")
+    stdout.write("\033[2J\033[3J")
     stdout.flush()
 def sendCursorToHome():
     stdout.write("\033[H")
@@ -105,8 +105,6 @@ def ii(textToPrint="", printAttribute="", inputAttribute=""):
     return inputSpecial(textToPrint, printAttribute, inputAttribute)
 
 def setTerminalTitle(terminalTitle="Python Terminal"):
-    """
-    """
     print(f"\033]0;{terminalTitle}\007", end="")
 
 def setAndPrintTerminalTitle(terminalTitle="Python Terminal", printAttribute=ReverseColours, endingChar="\n\n", addToPrintOnly_Pre=" ", addToPrintOnly_Post=" "):
@@ -116,7 +114,7 @@ def setAndPrintTerminalTitle(terminalTitle="Python Terminal", printAttribute=Rev
     print(f"\033]0;{terminalTitle}\007", end="")
     printSpecial(addToPrintOnly_Pre + terminalTitle + addToPrintOnly_Post, printAttribute, endingChar)
 
-def getSameLengthNumbers_iterator(numberToConvert, largestNumber, paddingChar=" ", paddingCharPosition_falseIfPre_trueIfPost=False, preNumStr="", postNumStr=""):
+def getSameLengthNumbers_iterator(numberToConvert, LONGEST_NUMBER, paddingChar=" ", paddingCharPosition_falseIfPre_trueIfPost=False, preNumStr="", postNumStr=""):
     """
     p:
         An iterator (ie a single number/time)
@@ -124,7 +122,7 @@ def getSameLengthNumbers_iterator(numberToConvert, largestNumber, paddingChar=" 
         str(customized number)
     """
     number = str(numberToConvert)
-    lenDiff = len(str(largestNumber)) - len(number)
+    lenDiff = len(str(LONGEST_NUMBER)) - len(number)
     number = preNumStr + number + postNumStr
     if paddingCharPosition_falseIfPre_trueIfPost:
         for i in range(lenDiff):

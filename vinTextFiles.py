@@ -11,14 +11,14 @@ def readFile(filePath):
 
 def writeFile_withOverwriteEnabled(filePath, dataToWrite=""):
     """
-    NOTE: doesn't check if file exists
+    NOTE: doesn't check folder path and file name validity
     """
     with open(filePath, "w") as file:
         file.write(dataToWrite)
     return True
 def writeFile(filePath, dataToWrite="", overwriteIfFileAlreadyExists=False):
     """
-    NOTE: doesn't check if file exists
+    NOTE: doesn't check folder path and file name validity
     """
     if overwriteIfFileAlreadyExists:
         return writeFile_withOverwriteEnabled(filePath, dataToWrite)
