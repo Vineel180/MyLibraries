@@ -1,4 +1,4 @@
-import vinFileExplorer_Base
+import vinFileExplorer_Core
 import os
 import re
 
@@ -78,7 +78,7 @@ def searchFilesInFolder_withExtensions__multiLayer(Path, extensionList):
     listOfFiles = getFilesInFolder_multiLayer(Path)
     newList = []
     for i in listOfFiles:
-        if (vinFileExplorer_Base.separateExtension(i))[-1] in extensionList:
+        if (vinFileExplorer_Core.separateExtension(i))[-1] in extensionList:
             newList.append(i)
     return newList
 def searchFilesInFolder_withExtensions__singleLayer(Path, extensionList):
@@ -92,7 +92,7 @@ def searchFilesInFolder_withExtensions__singleLayer(Path, extensionList):
     listOfFiles = getFilesInFolder_singleLayer(Path)
     newList = []
     for i in listOfFiles:
-        if (vinFileExplorer_Base.separateExtension(i))[-1] in extensionList:
+        if (vinFileExplorer_Core.separateExtension(i))[-1] in extensionList:
             newList.append(i)
     return newList
 

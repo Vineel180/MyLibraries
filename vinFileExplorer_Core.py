@@ -1,4 +1,5 @@
 import os
+import vinTerminalFormatting
 
 # SEPARATE STRING
 def separateExtension(Path):
@@ -61,3 +62,21 @@ def getTargetType(Path):
         0 IF object doesn't exist
     """
     return isFileOrFolderOrNone(Path)
+
+def createFolderPath(folderPath):
+    try:
+        os.makedirs(folderPath)
+        return True
+    except FileExistsError:
+        return True
+    except Exception:
+        return False
+
+def getValidFolderPath(Path, createFolderPath_ifItDoesNotExist, textToPrint="", printAttribute="", inputAttribute=""):
+    if createFolderPath_ifItDoesNotExist:
+        createFolderPath(Path)
+    while not getTargetType(Path):
+        Path = vinTerminalFormatting.inputSpecial(textToPrint, printAttribute, inputAttribute)
+        if createFolderPath_ifItDoesNotExist:
+            createFolderPath(Path)
+    return Path
