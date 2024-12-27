@@ -1,3 +1,5 @@
+from os import path as osPath
+
 def readFile(filePath):
     """
     o:
@@ -7,8 +9,15 @@ def readFile(filePath):
         fileData = file.read()
         return fileData
 
-def writeFile(filePath, dataToWrite=""):
-    """
-    """
+def writeFile_withOverwriteEnabled(filePath, dataToWrite=""):
     with open(filePath, "w") as file:
         file.write(dataToWrite)
+    return True
+def writeFile(filePath, dataToWrite="", overwriteIfFileAlreadyExists=False):
+    if overwriteIfFileAlreadyExists:
+        if osPath.isfile(filePath):
+            return False
+        else:
+            return writeFile_withOverwriteEnabled(filePath, dataToWrite)
+    else:
+        return writeFile_withOverwriteEnabled(filePath, dataToWrite)

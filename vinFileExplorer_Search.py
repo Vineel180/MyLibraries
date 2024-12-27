@@ -1,8 +1,8 @@
-import vinFileManagement_Base
+import vinFileExplorer_Base
 import os
 import re
 
-# GET ALL OBJECTS IN FOLDER
+# GET ALL ITEMS IN FOLDER
 def getFilesInFolder_multiLayer(Path):
     """
     o:
@@ -78,7 +78,7 @@ def searchFilesInFolder_withExtensions__multiLayer(Path, extensionList):
     listOfFiles = getFilesInFolder_multiLayer(Path)
     newList = []
     for i in listOfFiles:
-        if (vinFileManagement_Base.separateExtension(i))[-1] in extensionList:
+        if (vinFileExplorer_Base.separateExtension(i))[-1] in extensionList:
             newList.append(i)
     return newList
 def searchFilesInFolder_withExtensions__singleLayer(Path, extensionList):
@@ -92,11 +92,11 @@ def searchFilesInFolder_withExtensions__singleLayer(Path, extensionList):
     listOfFiles = getFilesInFolder_singleLayer(Path)
     newList = []
     for i in listOfFiles:
-        if (vinFileManagement_Base.separateExtension(i))[-1] in extensionList:
+        if (vinFileExplorer_Base.separateExtension(i))[-1] in extensionList:
             newList.append(i)
     return newList
 
-def searchFiles_Ya_FoldersInFolder_usingRegex__multiLayer(Path, regexPattern, _0IfBoth_1IfFiles_2IfFolders_=0):
+def searchFiles_Ya_FoldersInFolder_usingRegex__multiLayer(Path, regexPattern,  _0IfBoth_1IfFiles_2IfFolders_=0):
     """
     o:
         list(files and/or folders, with path)

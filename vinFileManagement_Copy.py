@@ -1,6 +1,6 @@
 import os
 import shutil
-import vinFileManagement_Base
+import vinFileExplorer_Base
 
 def reduceFileNameLength(fileName):
 
@@ -13,9 +13,9 @@ def convertToValidFolderPathAndObjectName(Path):
 
 
 def renameObject(oldFilePath, newFileName, autoAddExtension=True, convertToValidPath=True, preUniqueIdStr=" (", postUniqueIdStr=")", autoReduceLongFileNames=False):
-    folderPath = ( vinFileManagement_Base.separatePath(oldFilePath) )[0]
+    folderPath = ( vinFileExplorer_Base.separatePath(oldFilePath) )[0]
     if autoAddExtension:
-        newFilePath = newFilePath + (vinFileManagement_Base.separateExtension(oldFilePath))[-1]
+        newFilePath = newFilePath + (vinFileExplorer_Base.separateExtension(oldFilePath))[-1]
     newFilePath = os.path.join(folderPath, newFileName)
 
     newFilePath = 

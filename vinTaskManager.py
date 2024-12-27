@@ -10,7 +10,7 @@ def isAppRunning(appName):
             return True
     return False
 
-def stopApp(appName, return_ifRunning=False, printError=False):
+def stopApp(appName, return_ifRunning=False):
     """
     NOTE: returns FALSE if app was not running
     o:
@@ -27,20 +27,14 @@ def stopApp(appName, return_ifRunning=False, printError=False):
                 else:
                     return True
                 #
-            except Exception as e:
-                if printError:
-                    print(f"Failed to terminate app '{appName}': {e}")
+            except Exception:
                 #
                 if return_ifRunning:
                     return False, True
                 else:
                     return False
                 #
-    if printError:
-        print(f"App '{appName}' is not running.")
-    #
     if return_ifRunning:
         return False, False
     else:
         return False
-    #

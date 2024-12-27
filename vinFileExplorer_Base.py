@@ -7,20 +7,18 @@ def separateExtension(Path):
         list(str( remainder ), str( Extension ))
     """
     return Path.rsplit(".", 1)
-
 def separatePath(Path):
     """
     o:
-        list(str( remainder ), str( OBJECT ))
+        list(str( Path ), str( Target ))
     """
     return Path.rsplit("\\", 1)
-
 def removeTrailingChars(String, Char):
     while String[-1] == Char:
         String = String[:-1]
     return String
 
-# GET OBJECT TYPE
+# MORE
 def isFileOrFolderOrNone(Path):
     """
     o: int:
@@ -34,6 +32,8 @@ def isFileOrFolderOrNone(Path):
         return 1
     else:
         return 0
+def getTargetType(Path):
+    return isFileOrFolderOrNone(Path)
 
-def createFolder(Path):
+def createFolderPath(Path):
     os.makedirs(Path, exist_ok=True)

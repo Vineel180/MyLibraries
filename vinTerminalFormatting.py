@@ -69,6 +69,12 @@ def pSpecial(textToPrint="", printAttribute="", endingChar="\n"):
         chain printAttribute using +
     """
     printSpecial(textToPrint, printAttribute, endingChar)
+def pp(textToPrint="", printAttribute="", endingChar="\n"):
+    """
+    i:
+        chain printAttribute using +
+    """
+    printSpecial(textToPrint, printAttribute, endingChar)
 
 def inputSpecial(textToPrint="", printAttribute="", inputAttribute=""):
     """
@@ -89,13 +95,21 @@ def iSpecial(textToPrint="", printAttribute="", inputAttribute=""):
         str(userInput)
     """
     return inputSpecial(textToPrint, printAttribute, inputAttribute)
+def ii(textToPrint="", printAttribute="", inputAttribute=""):
+    """
+    i:
+        chain printAttribute/inputAttribute using +
+    o:
+        str(userInput)
+    """
+    return inputSpecial(textToPrint, printAttribute, inputAttribute)
 
 def setTerminalTitle(terminalTitle="Python Terminal"):
     """
     """
     print(f"\033]0;{terminalTitle}\007", end="")
 
-def setAndPrintTerminalTitle(terminalTitle="Python Terminal", printAttribute=ReverseColours, endingChar="\n\n", addToPrintOnly_Pre = " ", addToPrintOnly_Post = " "):
+def setAndPrintTerminalTitle(terminalTitle="Python Terminal", printAttribute=ReverseColours, endingChar="\n\n", addToPrintOnly_Pre=" ", addToPrintOnly_Post=" "):
     """
     NOTE: read default settings
     """
