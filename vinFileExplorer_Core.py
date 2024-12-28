@@ -72,11 +72,16 @@ def createFolderPath(folderPath):
     except Exception:
         return False
 
-def getValidFolderPath(Path, createFolderPath_ifItDoesNotExist, textToPrint="", printAttribute="", inputAttribute=""):
+def askUntilValidFolderPath_withOptionalGenerator(Path, createFolderPath_ifItDoesNotExist=False, textToPrint="", printAttribute="", inputAttribute=""):
     if createFolderPath_ifItDoesNotExist:
         createFolderPath(Path)
-    while not getTargetType(Path):
+    while getTargetType(Path) != 2:
         Path = vinTerminalFormatting.inputSpecial(textToPrint, printAttribute, inputAttribute)
         if createFolderPath_ifItDoesNotExist:
             createFolderPath(Path)
+    return Path
+
+def askUntilValidFilePath(Path, textToPrint="", printAttribute="", inputAttribute=""):
+    while getTargetType(Path) != 1:
+        Path = vinTerminalFormatting.inputSpecial(textToPrint, printAttribute, inputAttribute)
     return Path
